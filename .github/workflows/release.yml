@@ -13,10 +13,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: 18
 
       - name: Setup PNPM 7
         uses: pnpm/action-setup@v2.2.2

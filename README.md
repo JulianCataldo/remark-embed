@@ -1,6 +1,5 @@
 # `remark-embed`
 
-
 <!--
   https://github.com/sammndhr/gridsome-remark-embed-snippet/blob/master/index.js
   https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-remark-embed-snippet/src/index.js
