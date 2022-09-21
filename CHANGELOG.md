@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/JulianCataldo/remark-embed/compare/v1.1.0...v1.1.1) (2022-09-21)
+
+
+### Bug Fixes
+
+* add default value hint for gfm ([90e7770](https://github.com/JulianCataldo/remark-embed/commit/90e7770d47547da9866f5090eabaea1d9ff42d0a))
+
 # [1.1.0](https://github.com/JulianCataldo/remark-embed/compare/v1.0.0...v1.1.0) (2022-09-21)
 
 
