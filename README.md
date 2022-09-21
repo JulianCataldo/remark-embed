@@ -113,6 +113,14 @@ Reasons are:
 
 > **Warning**: Security concerns: Use this plugin at your own risk. You should trust your sources.
 
+## Demos
+
+https://user-images.githubusercontent.com/603498/191607897-3fe0f1ac-56ea-459a-ac2d-d833ecff0edd.mp4
+
+---
+
+https://user-images.githubusercontent.com/603498/191610234-af1d8db0-02b5-4b78-9d17-ffef1a799da1.mp4
+
 ## Features ideas
 
 It might be useful to:
