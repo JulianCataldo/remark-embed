@@ -15,7 +15,10 @@ import type { HTML, Parent, Root } from 'mdast';
 /* —————————————————————————————————————————————————————————————————————————— */
 
 export interface Settings {
-  /** Load GitHub flavored Markdown again (useful for Astro) */
+  /** Load GitHub flavored Markdown again (useful for Astro).
+   *
+   * **Default**: `true`
+   */
   useGfm?: boolean;
 }
 const remarkEmbed: Plugin<[Settings?], Root> =
