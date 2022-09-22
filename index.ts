@@ -25,11 +25,15 @@ export interface Settings {
    */
   useGfm?: boolean;
   /**
-   * Log Level
-   *
    * **Default**: `silent`
    */
   logLevel?: 'silent' | 'info' | 'debug';
+  /**
+   * For remote files.
+   *
+   * **Default**: `true`
+   */
+  useCache?: boolean;
 }
 const remarkEmbed: Plugin<[Settings?], Root> =
   (settings) => async (ast, vFile) => {
@@ -41,8 +45,14 @@ const remarkEmbed: Plugin<[Settings?], Root> =
     if (typeof settings?.logLevel === 'string') {
       logLevel = settings.logLevel;
     }
+    let useCache = true;
+    if (typeof settings?.useCache === 'boolean') {
+      useCache = settings.useCache;
+    }
+    const fetchRemote = useCache ? fetchWithCache : fetch;
 
     const embedNodes: HTML[] = [];
+    /* ······································································ */
 
     visit(ast, 'html', (node) => {
       if (node.value.includes(`<!-- embed:`)) {
@@ -63,9 +73,9 @@ const remarkEmbed: Plugin<[Settings?], Root> =
             filePath.startsWith('http://') || filePath.startsWith('https://');
 
           if (isUrl) {
-            remoteMd = await fetchWithCache(filePath)
+            remoteMd = await fetchRemote(filePath)
               .then(async (r) => {
-                if (['info', 'debug'].includes(logLevel)) {
+                if (['info', 'debug'].includes(logLevel) && useCache) {
                   if (isCached(r)) {
                     console.log(`Loading ${filePath} from cache`);
                   } else {
