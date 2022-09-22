@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/JulianCataldo/remark-embed/compare/v1.3.0...v1.3.1) (2022-09-22)
+
+
+### Bug Fixes
+
+* emphase for security concerns in docs ([acf268d](https://github.com/JulianCataldo/remark-embed/commit/acf268db03c8791e499d1d4278f8510dd45d0336))
+
 # [1.3.0](https://github.com/JulianCataldo/remark-embed/compare/v1.2.0...v1.3.0) (2022-09-22)
 
 
