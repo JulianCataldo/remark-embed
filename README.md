@@ -110,7 +110,9 @@ Reasons are:
 - Not having to deal with symbolic links, which are sometimes unpredictable.
 - Re-compose / selectively embedded Markdowns file or parts depending on context.
 
-> **Warning**: Security concerns: Use this plugin at your own risk. You should trust your sources.
+> **Warning**: Security concerns.
+> Use this plugin at your own risk.  
+> **You should trust your sources**.
 
 ## Demos
 
