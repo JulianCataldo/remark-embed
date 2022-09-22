@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/JulianCataldo/remark-embed/compare/v1.1.1...v1.2.0) (2022-09-22)
+
+
+### Features
+
+* add errors + log level + fetch cache handler ([86885cf](https://github.com/JulianCataldo/remark-embed/commit/86885cf438a417d3907948f63f2d4a1d66e57bae))
+
 ## [1.1.1](https://github.com/JulianCataldo/remark-embed/compare/v1.1.0...v1.1.1) (2022-09-21)
 
 
