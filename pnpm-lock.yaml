@@ -26,6 +26,7 @@ specifiers:
   remark-parse: ^10.0.1
   semantic-release: ^19.0.5
   typescript: 4.8.3
+  ultrafetch: ^0.3.0
   unified: ^10.1.2
   unist-util-visit: ^4.1.1
 
@@ -33,6 +34,7 @@ dependencies:
   remark: 14.0.2
   remark-gfm: 3.0.1
   remark-parse: 10.0.1
+  ultrafetch: 0.3.0
   unified: 10.1.2
   unist-util-visit: 4.1.1
 
@@ -3787,6 +3789,13 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /ultrafetch/0.3.0:
+    resolution: {integrity: sha512-V1ni6PuOnP4OWSJQsm7TOVE494kSmKb7tCxfhOpQjidgMUVtv/Hu8ZyPxS42XObnuBnbYhfop0/CXh9gNOA22w==}
+    dev: false
+    bundledDependencies:
+      - http-cache-semantics
+      - shorthash
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}
