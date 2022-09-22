@@ -25,7 +25,7 @@ export interface Settings {
    */
   useGfm?: boolean;
   /**
-   * **Default**: `silent`
+   * **Default**: `'silent'`
    */
   logLevel?: 'silent' | 'info' | 'debug';
   /**
