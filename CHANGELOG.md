@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/JulianCataldo/remark-embed/compare/v1.2.0...v1.3.0) (2022-09-22)
+
+
+### Features
+
+* option to disable remote caching ([fc1de28](https://github.com/JulianCataldo/remark-embed/commit/fc1de28ce3ca71c17c3041e9d4aa0204f0f724fe))
+
 # [1.2.0](https://github.com/JulianCataldo/remark-embed/compare/v1.1.1...v1.2.0) (2022-09-22)
 
 
