@@ -5,6 +5,7 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { withCache, isCached } from 'ultrafetch';
 /* ·········································································· */
 import { visit } from 'unist-util-visit';
 import remarkParse from 'remark-parse';
@@ -13,22 +14,35 @@ import { unified } from 'unified';
 import type { Plugin } from 'unified';
 import type { HTML, Parent, Root } from 'mdast';
 /* —————————————————————————————————————————————————————————————————————————— */
+const fetchWithCache = withCache(fetch);
+/* ·········································································· */
 
 export interface Settings {
-  /** Load GitHub flavored Markdown again (useful for Astro).
+  /**
+   * Load GitHub flavored Markdown again (useful for Astro).
    *
    * **Default**: `true`
    */
   useGfm?: boolean;
+  /**
+   * Log Level
+   *
+   * **Default**: `silent`
+   */
+  logLevel?: 'silent' | 'info' | 'debug';
 }
 const remarkEmbed: Plugin<[Settings?], Root> =
   (settings) => async (ast, vFile) => {
-    const embedNodes: HTML[] = [];
-
     let useGfm = false;
     if (typeof settings?.useGfm === 'boolean') {
       useGfm = settings.useGfm;
     }
+    let logLevel = 'silent';
+    if (typeof settings?.logLevel === 'string') {
+      logLevel = settings.logLevel;
+    }
+
+    const embedNodes: HTML[] = [];
 
     visit(ast, 'html', (node) => {
       if (node.value.includes(`<!-- embed:`)) {
@@ -49,9 +63,23 @@ const remarkEmbed: Plugin<[Settings?], Root> =
             filePath.startsWith('http://') || filePath.startsWith('https://');
 
           if (isUrl) {
-            remoteMd = await fetch(filePath).then(async (r) =>
-              r.text().then((t) => t),
-            );
+            remoteMd = await fetchWithCache(filePath)
+              .then(async (r) => {
+                if (['info', 'debug'].includes(logLevel)) {
+                  if (isCached(r)) {
+                    console.log(`Loading ${filePath} from cache`);
+                  } else {
+                    console.log(`Fetching ${filePath}`);
+                  }
+                }
+                return r.text().then((t) => t);
+              })
+              .catch(() => {
+                if (['info', 'debug'].includes(logLevel)) {
+                  console.log(`Could not fetch ${filePath}`);
+                }
+                return null;
+              });
           } else {
             /* Local file */
             // TODO: Test with absolute paths
