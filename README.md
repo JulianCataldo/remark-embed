@@ -44,21 +44,21 @@ Inside a unified pipeline:
 import remarkEmbed from 'remark-embed';
 
 /* … */
-  .use(remarkEmbed)
+  .use(remarkEmbed, { logLevel: 'info' })
 /* … */
 ```
 
 Or in an **Astro** config:
 
 ```js
-import remarkEmbed from 'remark-embed';
+import remarkEmbed, { Settings as RemarkEmbedSettings } from 'remark-embed';
 import remarkGfm from 'remark-gfm';
 
 export default defineConfig({
   /* … */
   markdown: {
     remarkPlugins: [
-      remarkEmbed,
+      [remarkEmbed, { logLevel: 'info' } as RemarkEmbedSettings],
 
       // You need to include GFM again, as using a custom remark plugin list
       // with Astro will discard its internal GFM plugin.
@@ -120,6 +120,29 @@ https://user-images.githubusercontent.com/603498/191607897-3fe0f1ac-56ea-459a-ac
 ---
 
 https://user-images.githubusercontent.com/603498/191610234-af1d8db0-02b5-4b78-9d17-ffef1a799da1.mp4
+
+## Interface
+
+```ts
+export interface Settings {
+  /**
+   * Load GitHub flavored Markdown again (useful for Astro).
+   *
+   * **Default**: `true`
+   */
+  useGfm?: boolean;
+  /**
+   * **Default**: `silent`
+   */
+  logLevel?: 'silent' | 'info' | 'debug';
+  /**
+   * For remote files.
+   *
+   * **Default**: `true`
+   */
+  useCache?: boolean;
+}
+```
 
 ## Features ideas
 
