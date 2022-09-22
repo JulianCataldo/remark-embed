@@ -37,7 +37,7 @@ That means all of your further transformations affect these embedded trees, too.
 pnpm i remark-embed
 ```
 
-Inside a unified pipeline:
+Inside a **unified** pipeline:
 
 ```js
 import remarkEmbed from 'remark-embed';
@@ -47,7 +47,7 @@ import remarkEmbed from 'remark-embed';
 /* … */
 ```
 
-Or in an **Astro** config:
+_-Or-_ in an **Astro** configuration:
 
 ```js
 import remarkEmbed, { Settings as RemarkEmbedSettings } from 'remark-embed';
@@ -81,13 +81,13 @@ In your Markdown file, just drop an `<!-- embed:./<file>.md -->`:
 ```markdown
 …**My Markdown**…
 
-# Remote
+# Remote Mardown file
 
 <!-- embed:https://raw.githubusercontent.com/JulianCataldo/JulianCataldo/master/README.md -->
 
 > Job is done
 
-# Local
+# Local Mardown file
 
 <!-- embed:../../../README.md -->
 
